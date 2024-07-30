@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.board_chess{
+  width: calc(70px * 8 + 4px);
+  height: calc(70px * 8 + 4px);
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid brown;
+  position: relative;
+}
+
+.cell_chess{
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell_white{
+  background-color: antiquewhite;
+}
+
+.cell_black{
+  background-color: #c47112;
+}
+
+
+
+.cell_figure img{
+  width: 65px;
+  height: 65px;
+  position: relative;
+}
+
+.cell_pawn img{
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.possible {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #22c022;
+}
+
+.choose_figure_white{
+  width: calc(70px * 2);
+  height: calc(70px * 2);
+  background-color: aliceblue;
+  position: absolute;
+  top: 212px;
+  left: 212px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.height_without_header{
+  height: calc(100vh - 4rem);
+}
+
+
+/* Media Queries for Small Screens */
+@media (max-width: 600px) {
+  .board_chess {
+    width: calc(50px * 8 + 4px);
+    height: calc(50px * 8 + 4px);
+  }
+
+  .cell_chess {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cell_figure img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .cell_pawn img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .choose_figure_white {
+    width: calc(50px * 2);
+    height: calc(50px * 2);
+    top: 152px;
+    left: 152px;
+  }
+}
+
+@media (max-width: 400px) {
+  .board_chess {
+    width: calc(40px * 8 + 4px);
+    height: calc(40px * 8 + 4px);
+  }
+
+  .cell_chess {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cell_figure img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .cell_pawn img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .choose_figure_white {
+    width: calc(40px * 2);
+    height: calc(40px * 2);
+    top: 112px;
+    left: 112px;
+  }
+}
