@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useStore from "../../../store/useUser";
-import { getOpenCalls } from "../../../actions/gameActions";
+import { getActiveGame, getOpenCalls } from "../../../actions/gameActions";
 import socketService from "../../../services/socket-service";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,13 @@ const OpenCalls = () => {
     socketService.connect();
 
     try {
+      getActiveGame().then(game => {
+        if (game && game.id){
+          const newPath = `/live/${game.id}`;
+          navigate(newPath);
+        }
+      })
+      .catch(err => console.log(err))
       getOpenCalls()
         .then((data) => {
           console.log(data);
@@ -41,7 +48,6 @@ const OpenCalls = () => {
     });
 
     const handleNewCalls = (newOpenCall: OpenCall) => {
-      // console.log("new open call", newOpenCall);
       setOpenCalls((prevOpenCalls) => [...prevOpenCalls, newOpenCall]);
     };
 
@@ -64,7 +70,7 @@ const OpenCalls = () => {
       // socketService.off('deletedGames', handleDeleteGames)
       socketService.disconnect();
     };
-  }, []);
+  }, [fetchUser, navigate]);
 
   console.log(user?.id);
 
